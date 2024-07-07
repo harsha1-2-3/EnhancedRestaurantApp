@@ -1,11 +1,11 @@
 import './index.css'
 
 const Header = props => {
-  const {quantity} = props
+  const {quantity, restaurantName} = props
 
   return (
     <div className="HeaderCont">
-      <h1 className="HeaderHead">UNI Resto Cafe</h1>
+      <h1 className="HeaderHead">{restaurantName}</h1>
       <div className="CartOrderCont">
         <p className="CartOrderPara">My Orders</p>
         <div className="CartImgCont">

@@ -6,10 +6,11 @@ import './App.css'
 
 class App extends Component {
   state = {
-    activeTabId: '',
+    activeTabId: '11',
     foodsList: [],
     quantity: 0,
     tabsList: [],
+    restaurantName: '',
   }
 
   componentDidMount() {
@@ -17,16 +18,18 @@ class App extends Component {
   }
 
   onClickTab = activeTab => {
-    this.setState({activeTabId: activeTab})
+    this.setState({activeTabId: activeTab}, this.getFoodsList)
   }
 
-  onClickMinus = () => {
-    this.setState(prevState => ({quantity: prevState.quantity - 1}))
-  }
+  onClickMinus = quantity =>
+    this.setState(prevState => ({
+      quantity: prevState.quantity - quantity,
+    }))
 
-  onClickPlus = () => {
-    this.setState(prevState => ({quantity: prevState.quantity + 1}))
-  }
+  onClickPlus = quantity =>
+    this.setState(prevState => ({
+      quantity: prevState.quantity + quantity,
+    }))
 
   getFoodsList = async () => {
     const url =
@@ -53,18 +56,28 @@ class App extends Component {
       menuCategory: eachObj.menu_category,
       menuCategoryId: eachObj.menu_category_id,
     }))
+    const {activeTabId} = this.state
+    const foodObjList = tabsListUpdated.find(
+      each => each.menuCategoryId === activeTabId,
+    )
     this.setState({
-      activeTabId: tabsListUpdated[0].menuCategoryId,
+      restaurantName: dataObject.restaurant_name,
       tabsList: tabsListUpdated,
-      foodsList: tabsListUpdated[0].categoryDishes,
+      foodsList: foodObjList.categoryDishes,
     })
   }
 
   render() {
-    const {activeTabId, quantity, tabsList, foodsList} = this.state
+    const {
+      restaurantName,
+      activeTabId,
+      quantity,
+      tabsList,
+      foodsList,
+    } = this.state
     return (
       <div className="ResAppCont">
-        <Header quantity={quantity} />
+        <Header restaurantName={restaurantName} quantity={quantity} />
         <div className="TabsContUl">
           {tabsList.map(eachTab => (
             <TabItem
@@ -78,7 +91,6 @@ class App extends Component {
         <div className="FoodsContUl">
           {foodsList.map(eachFood => (
             <FoodItem
-              quantity={quantity}
               foodItemDetails={eachFood}
               key={eachFood.dishId}
               onClickPlus={this.onClickPlus}
