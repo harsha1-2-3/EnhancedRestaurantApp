@@ -1,0 +1,85 @@
+/* Header */
+.HeaderCont {
+  min-height: 8vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.HeaderHead {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.CartImgCont {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbugLNtigjj3RrCG353B3cpImkdMNXBHGMYOPZcJIUuZcP86g9kruGFz1B&s=10');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 50px;
+  width: 50px;
+}
+
+.CartOrderCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.CartOrderPara {
+  display: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.CartCountPara {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eb4634;
+  color: white;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  margin-bottom: 25px;
+  font-size: 11px;
+}
+
+@media (min-width: 768px) {
+  .CartOrderPara {
+    display: flex;
+  }
+
+  .HeaderCont {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .HeaderHead {
+    font-size: 35px;
+  }
+
+  .CartImgCont {
+    height: 70px;
+    width: 70px;
+  }
+
+  .CartCountPara {
+    height: 22px;
+    width: 22px;
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+}

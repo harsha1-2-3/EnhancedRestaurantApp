@@ -1,0 +1,30 @@
+/* TabItem */
+.TabLi {
+  margin: 0px;
+}
+
+.TabBtn {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 5px;
+  color: black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  padding: 15px;
+}
+
+.TabBtnActive {
+  color: red;
+  font-weight: 900;
+  border-bottom: 2px solid red;
+}
+
+@media (min-width: 768px) {
+  .TabBtn {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,180 @@
+/* FoodItem */
+.FoodLi {
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.ItcDetailsCont {
+  display: flex;
+  flex-direction: row;
+}
+
+.ItcImg {
+  height: 23px;
+  width: 23px;
+  align-self: flex-start;
+  margin: 5px;
+  margin-top: 3px;
+}
+
+.FoodDetailsCont {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.FoodName {
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.FoodCurrency {
+  color: black;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.FoodDesc {
+  color: #999e9b;
+  font-size: 12px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.CustomCont {
+  background-color: green;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.BtnMpCount {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.Count {
+  color: white;
+}
+
+.CustomsAvai {
+  color: blue;
+  font-size: 13px;
+  margin: 0px;
+}
+
+.CustomsNot {
+  color: red;
+  font-size: 13px;
+  margin: 0px;
+}
+
+.CaloryFoodCont {
+  display: flex;
+  flex-direction: row;
+}
+
+.CaloryPara {
+  color: orange;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 8px;
+  align-self: center;
+}
+
+.FoodImg {
+  height: 75px;
+  width: 75px;
+  margin-top: 5px;
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .FoodLi {
+    min-width: 96%;
+    padding: 15px;
+    justify-content: space-between;
+    box-shadow: 1px 1px lightgrey;
+  }
+
+  .ItcDetailsCont {
+    width: 70%;
+  }
+
+  .FoodDetailsCont {
+    width: 100%;
+  }
+
+  .CaloryFoodCont {
+    align-items: center;
+    width: 30%;
+    justify-content: space-between;
+  }
+
+  .ItcImg {
+    height: 28px;
+    width: 30px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .FoodName {
+    font-size: 20px;
+    margin-bottom: 7px;
+  }
+
+  .FoodCurrency {
+    font-size: 17px;
+    margin-bottom: 7px;
+  }
+
+  .FoodDesc {
+    font-size: 17px;
+    margin-bottom: 7px;
+  }
+
+  .CustomCont {
+    width: 100px;
+    margin-bottom: 7px;
+  }
+
+  .Count {
+    font-size: 13px;
+  }
+
+  .CustomsAvai {
+    font-size: 15px;
+  }
+
+  .CustomsNot {
+    font-size: 15px;
+  }
+
+  .CaloryPara {
+    font-size: 18px;
+  }
+
+  .FoodImg {
+    height: 120px;
+    width: 120px;
+  }
+}
