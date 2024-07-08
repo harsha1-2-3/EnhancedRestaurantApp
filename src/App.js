@@ -1,7 +1,7 @@
 import {Component} from 'react'
-import Header from './components/Header/index'
-import TabItem from './components/TabItem/index'
-import FoodItem from './components/FoodItem/index'
+import Header from './components/Header'
+import TabItem from './components/TabItem'
+import FoodItem from './components/FoodItem'
 import './App.css'
 
 class App extends Component {
@@ -70,7 +70,7 @@ class App extends Component {
     const tableMenuList = dataObject.table_menu_list
     const tabsListUpdated = tableMenuList.map(eachObj => ({
       categoryDishes: eachObj.category_dishes.map(eachCat => ({
-        addOnCat: eachCat.addonCat,
+        addonCat: eachCat.addonCat,
         dishAvailability: eachCat.dish_Availability,
         dishCalories: eachCat.dish_calories,
         dishCurrency: eachCat.dish_currency,
@@ -92,7 +92,7 @@ class App extends Component {
     this.setState({
       restaurantName: dataObject.restaurant_name,
       tabsList: tabsListUpdated,
-      foodsList: foodObjList.categoryDishes,
+      foodsList: foodObjList ? foodObjList.categoryDishes : [],
     })
   }
 
@@ -138,4 +138,5 @@ class App extends Component {
     )
   }
 }
+
 export default App

@@ -3,7 +3,7 @@ import './index.css'
 const FoodItem = props => {
   const {foodItemDetails, onClickMinus, onClickPlus, getQuantity} = props
   const {
-    addOnCat,
+    addonCat,
     dishAvailability,
     dishCalories,
     dishCurrency,
@@ -69,7 +69,7 @@ const FoodItem = props => {
           ) : (
             <p className="CustomsNot">Not available</p>
           )}
-          {addOnCat.length !== 0 && (
+          {addonCat.length !== 0 && (
             <p className="CustomsAvai">Customizations available</p>
           )}
         </div>

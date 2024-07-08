@@ -2,6 +2,7 @@ import './index.css'
 
 const Header = props => {
   const {cartItems, restaurantName} = props
+
   const getCartCount = () =>
     cartItems.reduce((prev, pres) => prev + pres.quantity, 0)
 
