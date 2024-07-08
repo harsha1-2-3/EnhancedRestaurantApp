@@ -8,9 +8,9 @@ class App extends Component {
   state = {
     activeTabId: '11',
     foodsList: [],
-    quantity: 0,
     tabsList: [],
     restaurantName: '',
+    cartItems: [],
   }
 
   componentDidMount() {
@@ -21,15 +21,42 @@ class App extends Component {
     this.setState({activeTabId: activeTab}, this.getFoodsList)
   }
 
-  onClickMinus = quantity =>
-    this.setState(prevState => ({
-      quantity: prevState.quantity - quantity,
-    }))
+  onClickMinus = dish => {
+    const {cartItems} = this.state
+    const isAlreadyExists = cartItems.find(item => item.dishId === dish.dishId)
 
-  onClickPlus = quantity =>
-    this.setState(prevState => ({
-      quantity: prevState.quantity + quantity,
-    }))
+    if (isAlreadyExists) {
+      this.setState(prevState => ({
+        cartItems: prevState.cartItems
+          .map(item =>
+            item.dishId === dish.dishId
+              ? {...item, quantity: item.quantity - 1}
+              : item,
+          )
+          .filter(item => item.quantity > 0),
+      }))
+    }
+  }
+
+  onClickPlus = dish => {
+    const {cartItems} = this.state
+    const isAlreadyExists = cartItems.find(item => item.dishId === dish.dishId)
+
+    if (!isAlreadyExists) {
+      const newDish = {...dish, quantity: 1}
+      this.setState(prevState => ({
+        cartItems: [...prevState.cartItems, newDish],
+      }))
+    } else {
+      this.setState(prevState => ({
+        cartItems: prevState.cartItems.map(item =>
+          item.dishId === dish.dishId
+            ? {...item, quantity: item.quantity + 1}
+            : item,
+        ),
+      }))
+    }
+  }
 
   getFoodsList = async () => {
     const url =
@@ -52,9 +79,11 @@ class App extends Component {
         dishImage: eachCat.dish_image,
         dishName: eachCat.dish_name,
         dishPrice: eachCat.dish_price,
+        dishType: eachCat.dish_Type,
       })),
       menuCategory: eachObj.menu_category,
       menuCategoryId: eachObj.menu_category_id,
+      menuCategoryImage: eachObj.menu_category_image,
     }))
     const {activeTabId} = this.state
     const foodObjList = tabsListUpdated.find(
@@ -67,17 +96,23 @@ class App extends Component {
     })
   }
 
+  getQuantity = dishId => {
+    const {cartItems} = this.state
+    const cartItem = cartItems.find(each => each.dishId === dishId)
+    return cartItem ? cartItem.quantity : 0
+  }
+
   render() {
     const {
       restaurantName,
       activeTabId,
-      quantity,
+      cartItems,
       tabsList,
       foodsList,
     } = this.state
     return (
       <div className="ResAppCont">
-        <Header restaurantName={restaurantName} quantity={quantity} />
+        <Header restaurantName={restaurantName} cartItems={cartItems} />
         <div className="TabsContUl">
           {tabsList.map(eachTab => (
             <TabItem
@@ -95,6 +130,7 @@ class App extends Component {
               key={eachFood.dishId}
               onClickPlus={this.onClickPlus}
               onClickMinus={this.onClickMinus}
+              getQuantity={this.getQuantity}
             />
           ))}
         </div>
