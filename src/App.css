@@ -26,10 +26,13 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
+  white-space: nowrap;
   overflow-x: scroll;
   border-bottom: 1px solid lightgrey;
   margin: 0px;
+}
+::-webkit-scrollbar{
+  display:none;
 }
 
 /* Foods */
