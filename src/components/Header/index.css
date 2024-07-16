@@ -1,4 +1,26 @@
 /* Header */
+.LogoutBtn {
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 100px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 3px solid blue;
+  color: blue;
+  font-weight: bolder;
+}
+
+.cartIcon {
+  background-color: transparent;
+  border: 0px;
+}
+
+.link {
+  text-decoration: none;
+}
+
 .HeaderCont {
   min-height: 8vh;
   display: flex;
